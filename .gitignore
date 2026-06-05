@@ -216,3 +216,18 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Private config — your matching logic stays local
+streams.yaml
+contexts.yaml
+
+# LinkedIn data exports — contain personal data, never commit
+*.csv
+Connections.csv
+connections.csv
+scored_connections*.csv
+scored_connections*.html
+
+# LinkedIn full archive folders if someone unzips there
+Complete_LinkedInDataExport_*/
+Basic_LinkedInDataExport_*/

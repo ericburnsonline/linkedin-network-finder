@@ -3,7 +3,7 @@ LinkedIn Connection Scorer
 --------------------------
 Finds relevant people in your LinkedIn network across configurable match contexts.
 Outputs a scored CSV and a rich interactive HTML report with sortable columns,
-tier badges, LinkedIn profile links, and per-stream score breakdown.
+tier badges, LinkedIn profile links, and per-context score breakdown.
 
 Usage:
     python src/scorer.py --input connections.csv
@@ -1027,7 +1027,7 @@ def main():
     parser.add_argument("--html",      default="",     help="HTML report path (default: auto-named next to CSV)")
     parser.add_argument("--no-html",   action="store_true", help="Skip HTML report generation")
     parser.add_argument("--config",    default="config/streams.yaml")
-    parser.add_argument("--stream",    help="Filter to a single stream ID")
+    parser.add_argument("--stream",    help="Filter to a single context ID")
     parser.add_argument("--top",       type=int,       help="Top N results only")
     parser.add_argument("--min-tier",  default="C",    choices=["A","B","C"])
     parser.add_argument("--ai-enrich", action="store_true",

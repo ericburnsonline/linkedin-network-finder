@@ -69,7 +69,7 @@ A guided interview — 12 questions across 5 steps per context. You describe you
 
 ```bash
 # Custom output path or port:
-python stream_builder.py --output config/my_contexts.yaml --port 8765
+python stream_builder.py --output streams.yaml --port 8765
 ```
 
 ## Step 2: Run the matcher
@@ -155,8 +155,8 @@ Approximate cost for AI enrichment: under $1 for 2,000+ connections.
 
 ## Config format
 
-Your config lives in `config/contexts.yaml` (gitignored by default — see Privacy).
-The public repo ships `config/contexts.example.yaml` as a starting point.
+Your config lives in `streams.yaml` (gitignored by default — see Privacy).
+The public repo ships `streams.example.yaml` as a starting point.
 
 Each entry defines one context — a group of people you're trying to find:
 
@@ -188,7 +188,7 @@ automatically; you can tune it manually after seeing your results.
 
 ## Privacy
 
-- `config/contexts.yaml` is gitignored — your matching logic stays on your machine
+- `streams.yaml` is gitignored — your matching logic stays on your machine
 - `*.csv` files are gitignored — LinkedIn exports contain personal data
 - `--ai-enrich` sends job title and company name to the Anthropic API only — no names, emails, or URLs
 - The stream builder sends your interview answers to the Anthropic API to generate signals; they are not stored or used for training

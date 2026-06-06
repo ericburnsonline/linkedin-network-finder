@@ -10,7 +10,7 @@ You describe what you're looking for in plain English. Claude generates the matc
 
 ```bash
 # Install dependencies
-pip install pyyaml anthropic
+pip install -r requirements.txt
 
 # Step 1 — define what you're looking for (opens in browser)
 python stream_builder.py

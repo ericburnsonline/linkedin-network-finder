@@ -1,0 +1,133 @@
+# streams.example.yaml — LinkedIn Network Finder
+# ------------------------------------------------
+# Copy this file to streams.yaml and customize it for your own use.
+# streams.yaml is gitignored — your matching logic stays private.
+#
+# Each entry defines one "context" — a group of people you're trying to find.
+# The context builder wizard (stream_builder.py) generates this file automatically.
+# You can also edit it by hand.
+#
+# HOW SCORING WORKS
+# -----------------
+# Each contact's title and company are matched against your signals.
+# Matched weights are summed into a raw score, then normalized against
+# max_score to produce a 0–100 relevance score.
+#
+# Tiers:
+#   A = 70–100  strong match
+#   B = 40–69   good signal
+#   C = 15–39   weak signal
+#   (below 15 excluded from output)
+#
+# max_score calibration:
+#   Set this just above the highest raw score a perfect contact would realistically get.
+#   A good starting point: add up the weights of the 2–3 title signals your best
+#   contacts would match, plus 1–2 company signals. Run the tool, check your top
+#   contacts, and adjust until your best matches land in the 80–95 range.
+#
+# Signal weights:
+#   Title signals:    6–8 = exact match, 3–5 = strong indicator, 1–2 = weak indicator
+#   Company signals:  1–5 based on how strongly the company type predicts fit
+#   Negative signals: 6–10 = hard disqualifier, 2–4 = soft filter
+
+contexts:
+
+  # -----------------------------------------------------------------------
+  # Example 1: Workshop or event invitations
+  # Use case: finding People, HR, and L&D leaders to invite to a workshop
+  # -----------------------------------------------------------------------
+  - id: workshop_invites
+    description: "HR, People, and L&D leaders at mid-size companies investing in culture"
+    max_score: 10
+
+    title_signals:
+      - { term: "chief people officer",        weight: 6 }
+      - { term: "chro",                        weight: 6 }
+      - { term: "chief human resources",       weight: 6 }
+      - { term: "vp people",                   weight: 6 }
+      - { term: "head of people",              weight: 5 }
+      - { term: "vp human resources",          weight: 5 }
+      - { term: "director of people",          weight: 5 }
+      - { term: "head of l&d",                 weight: 5 }
+      - { term: "learning and development",    weight: 4 }
+      - { term: "director of talent",          weight: 4 }
+      - { term: "organizational development",  weight: 4 }
+      - { term: "people operations",           weight: 3 }
+      - { term: "hr director",                 weight: 3 }
+
+    company_signals:
+      - { term: "saas",        weight: 2 }
+      - { term: "technology",  weight: 1 }
+      - { term: "healthcare",  weight: 2 }
+      - { term: "nonprofit",   weight: 2 }
+      - { term: "consulting",  weight: 1 }
+
+    negative_signals:
+      - { term: "staffing",    weight: 6 }
+      - { term: "recruiting",  weight: 6 }
+      - { term: "laid off",    weight: 8 }
+      - { term: "freelance",   weight: 3 }
+
+  # -----------------------------------------------------------------------
+  # Example 2: Technical community or DevRel outreach
+  # Use case: finding developer advocates, DevRel, and community managers
+  # -----------------------------------------------------------------------
+  - id: devrel_community
+    description: "Developer advocates and community builders at developer-focused companies"
+    max_score: 9
+
+    title_signals:
+      - { term: "developer advocate",     weight: 6 }
+      - { term: "developer relations",    weight: 6 }
+      - { term: "devrel",                 weight: 6 }
+      - { term: "community manager",      weight: 5 }
+      - { term: "developer marketing",    weight: 5 }
+      - { term: "head of community",      weight: 5 }
+      - { term: "community lead",         weight: 4 }
+      - { term: "technical evangelist",   weight: 4 }
+      - { term: "field marketing",        weight: 3 }
+      - { term: "event marketing",        weight: 3 }
+
+    company_signals:
+      - { term: "developer tools",  weight: 3 }
+      - { term: "devtools",         weight: 3 }
+      - { term: "open source",      weight: 2 }
+      - { term: "api",              weight: 2 }
+      - { term: "platform",         weight: 1 }
+      - { term: "cloud",            weight: 1 }
+
+    negative_signals:
+      - { term: "b2c",           weight: 4 }
+      - { term: "consumer",      weight: 3 }
+      - { term: "retail",        weight: 4 }
+      - { term: "e-commerce",    weight: 4 }
+
+  # -----------------------------------------------------------------------
+  # Example 3: Collaborators or referral partners
+  # Use case: finding peers and practitioners in a complementary space
+  # -----------------------------------------------------------------------
+  - id: collaborators
+    description: "Practitioners and consultants in adjacent fields for referrals or collaboration"
+    max_score: 8
+
+    title_signals:
+      - { term: "consultant",          weight: 4 }
+      - { term: "independent",         weight: 3 }
+      - { term: "fractional",          weight: 4 }
+      - { term: "advisor",             weight: 3 }
+      - { term: "coach",               weight: 4 }
+      - { term: "founder",             weight: 3 }
+      - { term: "partner",             weight: 3 }
+      - { term: "principal",           weight: 3 }
+
+    company_signals:
+      - { term: "consulting",   weight: 2 }
+      - { term: "advisory",     weight: 2 }
+      - { term: "partners",     weight: 2 }
+      - { term: "ventures",     weight: 1 }
+
+    negative_signals:
+      - { term: "staffing",     weight: 5 }
+      - { term: "recruiting",   weight: 5 }
+      - { term: "insurance",    weight: 4 }
+      - { term: "real estate",  weight: 4 }

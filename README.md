@@ -49,19 +49,23 @@ A guided interview — 12 questions across 5 steps per context. You describe you
 2. Describe what you're looking for in plain English — who, what, rough deal size or scope
 
 *Step 2 — Ideal person*
+
 3. What job titles are the best fit? (add multiple variants)
 4. What types of organizations do they work in?
 5. What pain or trigger makes them ready to engage?
 
 *Step 3 — Past wins*
+
 6. Name 3–5 past matches or dream examples (helps Claude learn the pattern)
 7. What did those have in common?
 
 *Step 4 — Dead ends*
+
 8. What looks like a fit but never works out?
 9. Any roles or organizations to explicitly exclude?
 
 *Step 5 — Context*
+
 10. Typical deal size or engagement scope (click to select)
 11. How long does it take from first contact to agreement?
 12. One-time, project-based, or recurring?

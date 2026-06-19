@@ -6,7 +6,21 @@ Define what you're looking for and the tool surfaces your best matches. Promotin
 
 You describe what you're looking for in plain English. Claude generates the matching logic. The tool does the rest — producing a sortable, filterable HTML report with direct LinkedIn profile links, relevance scores, and priority tiers.
 
+:point_right: This tool depends on an [export of your LinkedIn contacts](https://www.linkedin.com/help/linkedin/answer/a566336/export-connections-from-linkedin). This can take up to 24 hours, and the link is only valid for a limited number of days. _Do that export right away!_
+
+:point_right: While you wait for the export, go ahead and review the 13 questions below that the stream_builder.py script will ask. You can find those questions below.
+
 ## Quick start
+
+## Getting your LinkedIn connections
+
+1. **LinkedIn → Settings → Data Privacy → Get a copy of your data**
+2. Select **"Want something in particular?"** then check **Connections** only
+3. Request the archive — usually arrives within minutes as a small download
+
+The export includes: `First Name`, `Last Name`, `URL`, `Email Address`,
+`Company`, `Position`, `Connected On`. Note: LinkedIn's export includes
+a short disclaimer at the top of the CSV — the tool handles this automatically.
 
 ```bash
 # Install dependencies
@@ -23,16 +37,6 @@ This produces two files:
 - `scored_connections.csv` — flat data with LinkedIn URLs, all match scores
 - `scored_connections.html` — interactive report, open in any browser
 
-## Getting your LinkedIn connections
-
-1. **LinkedIn → Settings → Data Privacy → Get a copy of your data**
-2. Select **"Want something in particular?"** then check **Connections** only
-3. Request the archive — usually arrives within minutes as a small download
-
-The export includes: `First Name`, `Last Name`, `URL`, `Email Address`,
-`Company`, `Position`, `Connected On`. Note: LinkedIn's export includes
-a short disclaimer at the top of the CSV — the tool handles this automatically.
-
 ## Step 1: Define what you're looking for
 
 ```bash
@@ -40,7 +44,7 @@ python stream_builder.py
 # Opens http://localhost:8764 in your browser
 ```
 
-A guided interview — 12 questions across 5 steps per context. You describe your ideal person in plain English; Claude generates the keyword signals and relevance weights automatically. When you're done, click Export to save your config.
+A guided interview — 13 questions across 5 steps per context. You describe your ideal person in plain English; Claude generates the keyword signals and relevance weights automatically. When you're done, click Export to save your config.
 
 **What it asks:**
 
